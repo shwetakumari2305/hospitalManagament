@@ -4,7 +4,6 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
-    network_mode: "host"
     ports:
       - 15672:15672
       - 5672:5672
@@ -14,8 +13,6 @@ services:
   mysql:
     image: mysql:latest
     container_name: mysql
-    network_mode: "host"
-    hostname: localhost
     ports:
       - 3306:3306
     environment:
@@ -26,16 +23,12 @@ services:
   mongodb:
     image: mongo:latest
     container_name: mongo-container
-    network_mode: "host"
-    hostname: localhost
     ports:
       - 27017:27017
   config-server:
     image: config-server
     build: config-server/
     container_name: config-server
-    network_mode: "host"
-    hostname: localhost
     restart: always
     ports:
       - 8888:8888
@@ -43,8 +36,6 @@ services:
     image: eureka-server
     build: eureka-server/
     container_name: eureka-server
-    network_mode: "host"
-    hostname: localhost
     restart: always
     ports:
       - 8761:8761
@@ -54,8 +45,6 @@ services:
     image: api-gateway
     build: api-gateway/
     container_name: api-gateway
-    network_mode: "host"
-    hostname: localhost
     ports:
       - 8585:8585
     depends_on:
@@ -64,8 +53,6 @@ services:
     image: user-service
     container_name: user-service
     build: user-service/
-    hostname: localhost
-    network_mode: "host"
     ports:
       - 9000:9000
     depends_on:
@@ -77,8 +64,6 @@ services:
     image: authentication-service
     container_name: authentication-service
     build: authentication-service/
-    hostname: localhost
-    network_mode: "host"
     ports:
       - 9010:9010
     depends_on:
@@ -90,8 +75,6 @@ services:
     image: appointment-service
     container_name: appointment-service
     build: appointment-service/
-    hostname: localhost
-    network_mode: "host"
     ports:
       - 8060:8060
     depends_on:
@@ -103,8 +86,6 @@ services:
     image: email-service
     container_name: email-service
     build: email-service/
-    hostname: localhost
-    network_mode: "host"
     ports:
       - 8075:8075
     depends_on:
@@ -115,8 +96,6 @@ services:
     image: webapp
     container_name: webapp
     build: webapp/
-    hostname: localhost
-    network_mode: "host"
     ports:
       - 4200:4200
     depends_on:
